@@ -20,3 +20,10 @@ def withdraw(request):
     current_user = request.user
     fromm = BankAccount.objects.all()
     return render (request, "all-temps/withdraw.html", {"fromm":fromm})
+
+@login_required(login_url="/accounts/login/")
+def transfer(request):
+    current_user = request.user
+    fromm = BankAccount.objects.all()
+    to = BankAccount.objects.all()
+    return render (request, "all-temps/transfer.html", {"fromm":fromm, "to":to})
