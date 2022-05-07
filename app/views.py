@@ -14,3 +14,9 @@ def deposit(request):
     current_user = request.user
     to = BankAccount.objects.all()
     return render (request, "all-temps/deposit.html", {"to":to})
+
+@login_required(login_url="/accounts/login/")
+def withdraw(request):
+    current_user = request.user
+    fromm = BankAccount.objects.all()
+    return render (request, "all-temps/withdraw.html", {"fromm":fromm})
