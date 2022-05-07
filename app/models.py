@@ -17,3 +17,21 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+class BankAccount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    account_number = models.IntegerField(max_length=100, null=False)
+    amount = models.IntegerField(max_length=256,null=True)
+    date_created     = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.account_number
+
+class Transactions(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
+    deposit = models.IntegerField(max_length=256,null=True)
+    withdraw = models.IntegerField(max_length=256,null=True)
+    transfer = models.IntegerField(max_length=256,null=True)
+
+    def __str__(self):
+        return self.user
