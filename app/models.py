@@ -19,8 +19,8 @@ class Profile(models.Model):
 
 class BankAccount(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    account_number = models.IntegerField(max_length=100, null=False)
-    amount = models.IntegerField(max_length=256,null=True)
+    account_number = models.IntegerField(null=False)
+    amount = models.IntegerField(null=True)
     date_created     = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -29,9 +29,9 @@ class BankAccount(models.Model):
 class Transactions(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     account = models.ForeignKey(BankAccount, on_delete=models.PROTECT)
-    deposit = models.IntegerField(max_length=256,null=True)
-    withdraw = models.IntegerField(max_length=256,null=True)
-    transfer = models.IntegerField(max_length=256,null=True)
+    deposit = models.IntegerField(null=True)
+    withdraw = models.IntegerField(null=True)
+    transfer = models.IntegerField(null=True)
 
     def __str__(self):
         return self.user
