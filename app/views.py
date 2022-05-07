@@ -10,6 +10,12 @@ def profile(request):
     return render(request, "all-temps/profile.html", {"profile": profile})
 
 @login_required(login_url="/accounts/login/")
+def createBankAccount(request):
+    current_user = request.user
+    account = BankAccount.objects.all()
+    return render (request, "all-temps/createaccount.html", {"account":account})
+
+@login_required(login_url="/accounts/login/")
 def deposit(request):
     current_user = request.user
     to = BankAccount.objects.all()
