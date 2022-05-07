@@ -33,3 +33,9 @@ def transfer(request):
     fromm = BankAccount.objects.all()
     to = BankAccount.objects.all()
     return render (request, "all-temps/transfer.html", {"fromm":fromm, "to":to})
+
+@login_required(login_url="/accounts/login/")
+def checkBalance(request):
+    current_user = request.user
+    account = BankAccount.objects.all()
+    return render (request, "all-temps/checkBalance.html", {"account":account})
