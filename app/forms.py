@@ -5,3 +5,4 @@ class createBankAccForm(forms.ModelForm):
     class Meta:
         model = BankAccount
         fields = '__all__'
+
