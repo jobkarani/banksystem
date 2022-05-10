@@ -41,3 +41,10 @@ def checkBalance(request):
     current_user = request.user
     account = BankAccount.objects.all()
     return render (request, "all-temps/checkBalance.html", {"account":account})
+
+
+@login_required(login_url="/accounts/login/")
+def checkAccount(request):
+    current_user = request.user
+    account = BankAccount.objects.all()
+    return render (request, "all-temps/checkBalance.html", {"account":account})
